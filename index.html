@@ -1,0 +1,110 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>GetSAP</title>
+        <meta name="description" content="">
+
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css">
+
+        <style type="text/css">
+            html {
+                overflow: auto;
+            }
+
+            a.tittle {
+                margin: 1px;
+            }
+            a img {
+                height: 44px !important;
+            }
+            iframe#iframe.playing {
+                width: 100% !important;
+                height: 1200px !important;
+                margin-top: 5px;
+            }
+
+            div #fixed_tray.widget_tray {
+                height: 0 !important;
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <a class="tittle"><img src="http://getsap.com/wp/wp-content/themes/GETSAP%20Theme%20up/img/GSlogo2.svg"></a>
+        <p class="tittle">GetSAP monitoring site</p>
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+
+        <!-- begining the code -->
+        <div id="website"></div>
+        <div id="wrapper">
+            <iframe id="iframe" scrolling="no" class="playing" src="https://p.datadoghq.com/sb/8e6ac4f84-ed64dcd92cfe1b7a7ae6adc99d935232" frameborder="0"></iframe>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+        <script type="application/javascript">
+            var rotate = 40;
+            var pages = ["https://p.datadoghq.com/sb/8e6ac4f84-ed64dcd92cfe1b7a7ae6adc99d935232", "https://p.datadoghq.com/sb/8e6ac4f84-a55e2e47e05d32670a7e3de46d6c87ed", "https://p.datadoghq.com/sb/8e6ac4f84-4f4323546d7b6c8d2b81ce6229e273a9"];
+            var i = 0;
+
+            var timerFunction = function ftimeout(){
+                if(i == pages.length)
+                    i = 0;
+                else if (i < 0)
+                    i = pages.length - 1;
+                console.log(pages);
+                $('#iframe').fadeOut("slow",function(){
+                    $('#iframe').attr("src",pages[i++]);
+                });
+            }
+
+            function fupdateList(){
+                pages = [];
+                $("#website").each(function(){
+                    pages.push($(this).text())
+                })
+                console.log(pages);
+            }
+
+            var timeout = null;// = setTimeout(timerFunction,5000);
+
+            $("#iframe").load(function(){
+                if($("#iframe").hasClass("playing"))
+                    $(this).delay(1000).fadeIn("slow",function(){
+                        clearTimeout(timeout);
+                        timeout = setTimeout(timerFunction,rotate * 1000);
+                        $("html, body").animate({ scrollTop: $(document).height() }, 30000, 'linear', function restart () {
+                            $('html, body').animate({scrollTop:0}, 'slow');
+                        });
+                    });
+            });
+
+        </script>
+
+
+
+    <!-- end -->
+
+
+    </body>
+</html>
