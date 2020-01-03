@@ -64,6 +64,7 @@
 
         <script type="application/javascript">
             var rotate = 40;
+            response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
             var pages = ["http://40.70.203.210/zabbix/zabbix.php?action=dashboard.view&dashboardid=21", "http://40.70.203.210/zabbix/zabbix.php?action=dashboard.view&dashboardid=22", "http://40.70.203.210/zabbix/zabbix.php?action=dashboard.view&dashboardid=23"];
             var i = 0;
 
