@@ -56,7 +56,7 @@
         <!-- begining the code -->
         <div id="website"></div>
         <div id="wrapper">
-            <iframe id="iframe" scrolling="no" class="playing" src="https://p.datadoghq.com/sb/8e6ac4f84-ed64dcd92cfe1b7a7ae6adc99d935232" frameborder="0"></iframe>
+            <iframe id="iframe" scrolling="no" class="playing" src="https://40.70.203.210/zabbix/zabbix.php?action=dashboard.view&dashboardid=1" frameborder="0"></iframe>
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -64,7 +64,8 @@
 
         <script type="application/javascript">
             var rotate = 40;
-            var pages = ["https://p.datadoghq.com/sb/8e6ac4f84-ed64dcd92cfe1b7a7ae6adc99d935232", "https://p.datadoghq.com/sb/8e6ac4f84-a55e2e47e05d32670a7e3de46d6c87ed", "https://p.datadoghq.com/sb/8e6ac4f84-4f4323546d7b6c8d2b81ce6229e273a9"];
+            response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
+            var pages = ["https://40.70.203.210/zabbix/zabbix.php?action=dashboard.view&dashboardid=21", "https://40.70.203.210/zabbix/zabbix.php?action=dashboard.view&dashboardid=22", "https://40.70.203.210/zabbix/zabbix.php?action=dashboard.view&dashboardid=23"];
             var i = 0;
 
             var timerFunction = function ftimeout(){
